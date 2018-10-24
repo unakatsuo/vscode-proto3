@@ -82,13 +82,13 @@ export class Proto3Compiler {
         });       
     }
 
-    private getProtocPath(): string {
+    public getProtocPath(): string {
         let protoc = this._isProtocInPath ? 'protoc' : '?';
         return this._configResolver.resolve(
             this._settings.get<string>('path', protoc));
     }
 
-    private getProtocOptions(): string[] {
+    public getProtocOptions(): string[] {
         return this._configResolver.resolve(
             this._settings.get<string[]>('options', []));
     }

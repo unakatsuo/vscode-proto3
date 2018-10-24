@@ -8,6 +8,7 @@ import { Proto3CompletionItemProvider } from './proto3Suggest';
 import { Proto3LanguageDiagnosticProvider } from './proto3Diagnostic';
 import { Proto3Compiler } from './proto3Compiler';
 import { PROTO3_MODE } from './proto3Mode';
+import { Proto3DocumentSymbolProvider } from './proto3Symbol';
 
 export function activate(ctx: vscode.ExtensionContext): void {
 
@@ -90,6 +91,8 @@ export function activate(ctx: vscode.ExtensionContext): void {
         }
     });
 
+    vscode.languages.registerDocumentSymbolProvider(PROTO3_MODE.language, new Proto3DocumentSymbolProvider(compiler));
+    
     if (vscode.window.activeTextEditor) {
         // 
     }
